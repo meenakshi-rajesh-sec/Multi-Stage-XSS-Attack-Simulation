@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSP Demonstration</title>
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self';">
+</head>
+<body>
+    <h2>Content Security Policy Test</h2>
+    <p>Inline scripts are blocked by CSP:</p>
+    
+    <script>
+    // This will be BLOCKED
+    document.write('<p style="color:red">BLOCKED BY CSP</p>');
+    </script>
+    
+    <p>Check browser Console for CSP violations.</p>
+</body>
+</html>

